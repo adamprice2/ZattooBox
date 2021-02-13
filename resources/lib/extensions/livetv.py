@@ -71,7 +71,10 @@ class LiveTV(ZBExtension):
 	#---
 
 	def fetch_imageUrl(self, relPath):
-		return self.IMAGES_ROOT + relPath.replace('/images/channels', '')
+                x = self.IMAGES_ROOT + relPath.replace('/images/channels', '')
+		with open("/tmp/adam",'w') as f:
+                 f.write(x.replace("84x48","210x120"))
+		return  x.replace("84x48","210x120")
 
 	def persist_channels(self, channelsData):
 		channelsData['expires'] = time.time() + 86400
